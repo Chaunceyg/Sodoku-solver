@@ -24,6 +24,7 @@ function Cell(row, col, block, val) {
 	this.val = val;
 }
 
+
 function findBlock(row,col) {
 	var block = 0;
 	if(row === 1 || row === 2 || row === 3) {
@@ -43,21 +44,54 @@ function findBlock(row,col) {
 	}
 	return block;
 }
-
+//math.floor
 
 function Game(nums) {
 	var numArray = Array.prototype.slice.call(nums);
 	var cells = [];
 	var rowCounter = 0;
-	var col;
+	var colCounter;
 	for(var i = 0; i<numArray.length; i++) {
-		col = (i%9)+1;
+		colCounter = (i%9)+1;
 		if(i%9===0) {
 			rowCounter++;
 		}
-		cells.push(new Cell(rowCounter,col,findBlock(rowCounter,col),numArray[i]));
+		cells.push(new Cell(rowCounter,colCounter,findBlock(rowCounter,colCounter),numArray[i]));
 	}
 	this.cells = cells;
+
+	// function Results(cells) {
+	// var result = [];
+ //    numArray.forEach(function(cells){
+ //        if (cells!=='.')
+ //        result.push(cells);
+ //    })
+ //    return result;
+	// }
+	// console.dir(Results());
+	
+
+	this.searchRow = function(rows) {
+	    var filterRow = cells.filter( function(cell) {
+	    return cell.row === rows;
+
+	    });
+	    
+	    var rowVal = filterRow.map(function(val) {
+	    	return Cell.val=val;
+
+	    }) 
+	    console.log(rowVal);
+	    return rowVal;
 }
+	   
+}
+
+// searchRow(1);
+
+
+// console.dir(new Game(nums));
+
+
 
 

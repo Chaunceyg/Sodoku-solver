@@ -2,6 +2,9 @@ body {
 	
 }
 
+table {
+	border-collapse: collapse;
+}
 
 td {
 	padding-left: 9px;
@@ -12,3 +15,18 @@ td {
 	border-width: 1px;
 }
 
+td:nth-child(3n) {
+	border-right-width: 3px;
+}
+
+td:first-child {
+	border-left-width: 3px;
+}
+
+tr:nth-child(3n) {
+	border-bottom-width: 3px;
+}
+
+tr:first-child {
+	border-top-width: 3px;
+}
