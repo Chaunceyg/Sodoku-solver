@@ -1,0 +1,32 @@
+body {
+	
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	padding-left: 9px;
+	padding-right: 9px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+td:nth-child(3n) {
+	border-right-width: 3px;
+}
+
+td:first-child {
+	border-left-width: 3px;
+}
+
+tr:nth-child(3n) {
+	border-bottom-width: 3px;
+}
+
+tr:first-child {
+	border-top-width: 3px;
+}
