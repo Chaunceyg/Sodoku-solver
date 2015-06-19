@@ -65,25 +65,28 @@ function Game(nums) {
 		
 	}
 	
+
+	this.search = function(location, group){
+		var filter = this.cells.filter(function(cell){
+			return cells.group === groupNum;
+		});
+
+		var groupValue = filterGroup.map(function(cell){
+			return cell.val;
+		});
+		var groupArray = groupValue.filter(function(cell){
+			return cell !== '.';
+		});
+		var groupOptions = _.difference(this.oneToNine, groupArray);
+
+		return groupOptions;
+	}
 	this.searchRow = function(rowNum) {
 	    var filterRow = this.cells.filter(function(cell) {
 	    return cell.row === rowNum;
 
 	    });
 	    
-<<<<<<< HEAD
-	    var rowVal = filterRow.map(function(val) {
-	    	return Cell.val=val;
-
-	    }) 
-	    console.log(rowVal);
-	    return rowVal;
-}
-
-var PossibleRowElements = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var rowOneElements = [1, 5, 8, 2, 6];
-var missingElements = [3, 4, 7, 9]
-=======
 	    var rowVal = filterRow.map(function(cell) {
 	    	return cell.val;
 
@@ -134,7 +137,6 @@ var missingElements = [3, 4, 7, 9]
 				var blocOptions = _.difference(this.oneToNine, blocArray);
 				return blocOptions;
 			}   
->>>>>>> master
 }
 
 // console.dir(new Game(nums));
