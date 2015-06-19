@@ -62,10 +62,20 @@ function Game(nums) {
 	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 	this.searchCell = function() {
-			var emptyCell = this.cells.filter(function(cell) {
-				return cell.val === '.';
-			})
-			return emptyCell;
+		var emptyCell = this.cells.filter(function(cell) {
+			return cell.val === '.';
+		})
+		console.log(emptyCell[2].row);
+		var  rowArray = [];
+		var colArray = [];
+		var blockArray = [];
+		for(var i = 0; i< emptyCell.length; i++){
+			rowArray.push(this.searchGroup(emptyCell[i].row, 'row'));
+			// colArray.push(this.searchGroup(emptyCell[i].col, 'col'));
+			// blockArray.push(this.searchGroup(emptyCell[i].block, 'block'));
+		}
+		console.log(rowArray);
+		return someArray;
 	}
 	 
 	this.searchGroup = function(groupNum, group) {
@@ -85,11 +95,11 @@ function Game(nums) {
 
 		return groupOptions;
 	}
-	this.searchOne = function(){
-		this.searchGroup(1, 'row');
-		// this.searchGroup(4, 'col');
-		// this.searchGroup(2, 'block');
-	}
+	// this.searchOne = function(){
+	// 	this.searchGroup(1, 'row');
+	// 	this.searchGroup(4, 'col');
+	// 	this.searchGroup(2, 'block');
+	// }
 }
 
 // console.dir(new Game(nums));
