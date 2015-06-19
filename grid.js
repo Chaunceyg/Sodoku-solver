@@ -61,9 +61,13 @@ function Game(nums) {
 	this.cells = cells;
 	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-	this.searchRow = function(rows) {
+	this.searchCell = function(cellParam) {
+		
+	}
+	
+	this.searchRow = function(rowNum) {
 	    var filterRow = this.cells.filter(function(cell) {
-	    return cell.row === rows;
+	    return cell.row === rowNum;
 
 	    });
 	    
@@ -76,14 +80,48 @@ function Game(nums) {
 				return cell !== '.';
 			}) 
 			
-			var optArray = _.difference(this.oneToNine, rowArray);
-	    return optArray;
-		}
-	   
+			var rowOptions = _.difference(this.oneToNine, rowArray);
+	    return rowOptions;
+		}	 
+
+	this.searchCol = function(colNum) {
+			var filterCol = this.cells.filter(function(cell) {
+			return cell.col === colNum;
+
+			});
+			
+			var colVal = filterCol.map(function(cell) {
+				return cell.val;
+
+			})
+			
+			var colArray = colVal.filter(function(cell) {
+				return cell !== '.';
+			}) 
+			
+			var colOptions = _.difference(this.oneToNine, colArray);
+			return colOptions;
+		}	
+		
+		this.searchBloc = function(blocNum) {
+				var filterBloc = this.cells.filter(function(cell) {
+				return cell.block === blocNum;
+
+				});
+				
+				var blocVal = filterBloc.map(function(cell) {
+					return cell.val;
+
+				})
+				
+				var blocArray = blocVal.filter(function(cell) {
+					return cell !== '.';
+				}) 
+				
+				var blocOptions = _.difference(this.oneToNine, blocArray);
+				return blocOptions;
+			}   
 }
-
-// searchRow(1);
-
 
 // console.dir(new Game(nums));
 
