@@ -61,8 +61,11 @@ function Game(nums) {
 	this.cells = cells;
 	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-	this.searchCell = function(cellParam) {
-		
+	this.searchCell = function() {
+		var emptyCell = this.cells.filter(function(cell){
+			return cell.val === '.';
+		});
+		return emptyCell;
 	}
 	 
 	this.searchGroup = function(groupNum, group) {
@@ -82,25 +85,11 @@ function Game(nums) {
 
 		return groupOptions;
 	}
-		
-		this.searchBloc = function(blocNum) {
-				var filterBloc = this.cells.filter(function(cell) {
-				return cell.block === blocNum;
-
-				});
-				
-				var blocVal = filterBloc.map(function(cell) {
-					return cell.val;
-
-				})
-				
-				var blocArray = blocVal.filter(function(cell) {
-					return cell !== '.';
-				}) 
-				
-				var blocOptions = _.difference(this.oneToNine, blocArray);
-				return blocOptions;
-			}   
+	this.searchOne = function(){
+		this.searchGroup(1, 'row');
+		// this.searchGroup(4, 'col');
+		// this.searchGroup(2, 'block');
+	}
 }
 
 // console.dir(new Game(nums));
