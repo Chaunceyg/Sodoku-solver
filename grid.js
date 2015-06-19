@@ -84,7 +84,10 @@ function Game(nums) {
 	    console.log(rowVal);
 	    return rowVal;
 }
-	   
+
+var PossibleRowElements = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var rowOneElements = [1, 5, 8, 2, 6];
+var missingElements = [3, 4, 7, 9]
 }
 
 // searchRow(1);
