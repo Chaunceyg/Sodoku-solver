@@ -61,8 +61,12 @@ function Game(nums) {
 	this.cells = cells;
 	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-	this.searchCell = function(cellParam) {
-		
+//
+	this.searchCell = function() {
+			var emptyCell = this.cells.filter(function(cell) {
+				return cell.val === '.';
+			})
+			return emptyCell;
 	}
 	
 	this.searchRow = function(rowNum) {
