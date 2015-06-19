@@ -59,24 +59,10 @@ function Game(nums) {
 		cells.push(new Cell(rowCounter,colCounter,findBlock(rowCounter,colCounter),numArray[i]));
 	}
 	this.cells = cells;
-	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-	this.searchCell = function() {
-		var emptyCell = this.cells.filter(function(cell) {
-			return cell.val === '.';
-		})
-		console.log(emptyCell[2].row);
-		var  rowArray = [];
-		var colArray = [];
-		var blockArray = [];
-		for(var i = 0; i< emptyCell.length; i++){
-			rowArray.push(this.searchGroup(emptyCell[i].row, 'row'));
-			// colArray.push(this.searchGroup(emptyCell[i].col, 'col'));
-			// blockArray.push(this.searchGroup(emptyCell[i].block, 'block'));
-		}
-		console.log(rowArray);
-		return someArray;
-	}
+	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];	
+	this.rowArray = [];
+	this.colArray = [];
+	this.blocArray = [];
 	 
 	this.searchGroup = function(groupNum, group) {
 		var filterGroup = this.cells.filter(function(cell) {
@@ -95,11 +81,20 @@ function Game(nums) {
 
 		return groupOptions;
 	}
-	// this.searchOne = function(){
-	// 	this.searchGroup(1, 'row');
-	// 	this.searchGroup(4, 'col');
-	// 	this.searchGroup(2, 'block');
-	// }
+	this.searchCell = function() {
+		var emptyCell = this.cells.filter(function(cell) {
+			return cell.val === '.';
+		})
+	
+		for(var i = 0; i < emptyCell.length; i++) {
+			this.rowArray.push(this.searchGroup(emptyCell[i].row, 'row'));
+			this.colArray.push(this.searchGroup(emptyCell[i].col, 'col'));
+			this.blocArray.push(this.searchGroup(emptyCell[i].block, 'block'));
+		}
+		console.log(this.rowArray);
+		console.log(this.colArray);
+		console.log(this.blocArray);
+	}	   
 }
 
 // console.dir(new Game(nums));
