@@ -59,31 +59,26 @@ function Game(nums) {
 		cells.push(new Cell(rowCounter,colCounter,findBlock(rowCounter,colCounter),numArray[i]));
 	}
 	this.cells = cells;
-
-	// function Results(cells) {
-	// var result = [];
- //    numArray.forEach(function(cells){
- //        if (cells!=='.')
- //        result.push(cells);
- //    })
- //    return result;
-	// }
-	// console.dir(Results());
-	
+	this.oneToNine = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 	this.searchRow = function(rows) {
-	    var filterRow = cells.filter( function(cell) {
+	    var filterRow = this.cells.filter(function(cell) {
 	    return cell.row === rows;
 
 	    });
 	    
-	    var rowVal = filterRow.map(function(val) {
-	    	return Cell.val=val;
+	    var rowVal = filterRow.map(function(cell) {
+	    	return cell.val;
 
-	    }) 
-	    console.log(rowVal);
-	    return rowVal;
-}
+	    })
+			
+			var rowArray = rowVal.filter(function(cell) {
+				return cell !== '.';
+			}) 
+			
+			var optArray = _.difference(this.oneToNine, rowArray);
+	    return optArray;
+		}
 	   
 }
 
@@ -92,6 +87,6 @@ function Game(nums) {
 
 // console.dir(new Game(nums));
 
-
+module.exports = Game;
 
 
