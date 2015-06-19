@@ -64,44 +64,24 @@ function Game(nums) {
 	this.searchCell = function(cellParam) {
 		
 	}
-	
-	this.searchRow = function(rowNum) {
-	    var filterRow = this.cells.filter(function(cell) {
-	    return cell.row === rowNum;
+	 
+	this.searchGroup = function(groupNum, group) {
+		var filterGroup = this.cells.filter(function(cell) {
+			return cell[group] === groupNum;
+		});
 
-	    });
-	    
-	    var rowVal = filterRow.map(function(cell) {
-	    	return cell.val;
+		var groupVal = filterGroup.map(function(cell) {
+			return cell.val;
+		});
+			
+		var groupArray = groupVal.filter(function(cell) {
+			return cell !== '.';
+		}); 
+			
+		var groupOptions = _.difference(this.oneToNine, groupArray);
 
-	    })
-			
-			var rowArray = rowVal.filter(function(cell) {
-				return cell !== '.';
-			}) 
-			
-			var rowOptions = _.difference(this.oneToNine, rowArray);
-	    return rowOptions;
-		}	 
-
-	this.searchCol = function(colNum) {
-			var filterCol = this.cells.filter(function(cell) {
-			return cell.col === colNum;
-
-			});
-			
-			var colVal = filterCol.map(function(cell) {
-				return cell.val;
-
-			})
-			
-			var colArray = colVal.filter(function(cell) {
-				return cell !== '.';
-			}) 
-			
-			var colOptions = _.difference(this.oneToNine, colArray);
-			return colOptions;
-		}	
+		return groupOptions;
+	}
 		
 		this.searchBloc = function(blocNum) {
 				var filterBloc = this.cells.filter(function(cell) {
