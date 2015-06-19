@@ -88,15 +88,22 @@ function Game(nums) {
 				return cell.val === '.';
 			})
 		
-			for(var i = 0; i < emptyCell.length; i++) {
-				this.rowArray.push(this.searchGroup(emptyCell[i].row, 'row'));
-				this.colArray.push(this.searchGroup(emptyCell[i].col, 'col'));
-				this.blocArray.push(this.searchGroup(emptyCell[i].block, 'block'));
-			}
+			// for(var i = 0; i < emptyCell.length; i++) {
+				this.rowArray.push(this.searchGroup(emptyCell[1].row, 'row'));
+				this.colArray.push(this.searchGroup(emptyCell[9].col, 'col'));
+				this.blocArray.push(this.searchGroup(emptyCell[3].block, 'block'));
+			// }
 			console.log(this.rowArray);
 			console.log(this.colArray);
 			console.log(this.blocArray);
-		}	   
+		}	 
+		
+		this.solveIt = function() {
+			this.searchCell();
+			var solution = _.intersection(this.rowArray[0], this.colArray[0], this.blocArray[0]);
+			
+			return solution;
+		}  
 }
 
 // console.dir(new Game(nums));
